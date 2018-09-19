@@ -1,14 +1,20 @@
-# ShellterlabsCTF
-  Repository of Capture The Flag (CTF) challenge resolutions, proposed on the https://shellterlabs.com portal, where each challenge involves one or more techniques that together make up 'The World' of Information Security.
-The challenges include categories such as:
-- Cryptography,
-- Steganography,
-- Bruteforce,
-- SQL Injection,
-- Web Exploitation,
-- Reverse engineering,
-- Analysis & Forensic Skills,
-- etc...
+# ShellterlabsCTF + HACKAFLAG + MARATONAHACKER + HACKTHEBOX
+ Repository of the resolutions and scripts of several Capture the Flag (CTF) style challenges, proposed in several portals such as:
+  - https://shellterlabs.com;
+  - https://ctf.hackaflag.com.br;
+  - http://maratonahacker.net.br;
+  - https://hackthebox.eu;
+  - and much more ...
+ Where each of the challenges involves one or more segments of the Information Security area.
+ Among the segments are categories such as:
+  - Cryptography,
+  - Steganography,
+  - Bruteforce,
+  - SQL Injection,
+  - Web Exploitation,
+  - Reverse engineering,
+  - Analysis & Forensic Skills,
+  - ...
 
 Twitter : https://twitter.com/sqleto
 
