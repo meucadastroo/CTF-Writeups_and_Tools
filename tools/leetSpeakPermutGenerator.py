@@ -1,5 +1,6 @@
+#!/usr/bin/env python
 # coding=utf-8
-
+# By Sql3t0
 import argparse
 
 leetDict = {
