@@ -52,7 +52,7 @@ E eh nessa parte onde entra uma dica que pode lhe fazer economizar muito tempo e
 
 <h3>Como fazer isso<strong> ?</strong></h3>
 <p>Usando a classe <strong><a href=”https://docs.microsoft.com/pt-br/dotnet/api/system.reflection.assembly?view=netframework-4.7.2”>System.Reflection.Assembly</a></strong> eh possivel carregar o conteudo da DLL, criar objetos das classes e ainda utilizar os seus metodos contidos em cada classe.</p>
-
+--------------------------------------------------------------------------------------------------------------------------------------
 </p>
 <div>
 PS C:\Users\Sql3t0\Desktop> $DLLbytes = [System.IO.File]::ReadAllBytes("C:\Users\Sql3t0\Desktop\CTF-Esecurity_LaricasCriptografia.dll")
@@ -67,8 +67,8 @@ False  v4.0.30319
 PS C:\Users\Sql3t0\Desktop>
 </div>
 </p>
-
-<p>Caso queira Listar todos o métodos contidos na DLL recém carregadabasta executar o comando :</p>
+--------------------------------------------------------------------------------------------------------------------------------------
+<p>Caso queira Listar todos o métodos contidos na DLL recém carregada basta executar o comando :</p>
 
 <p>
 <div>
