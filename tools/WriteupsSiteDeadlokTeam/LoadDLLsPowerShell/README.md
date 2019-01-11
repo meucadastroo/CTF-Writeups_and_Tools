@@ -7,7 +7,7 @@ Tomando como Exemplo de DLL irei usar uma <a href=”https://github.com/sql3t0/s
  
 <p>Usando o comando <strong>file</strong> na DLL para descobrir a qual arquitetura ela pertence,descobrimos que ela eh x86.</p>
 
-<div>
+<div data-codemirror-mode="text/x-python">
 C:\Users\Sql3t0\Desktop> file CTF-Esecurity_LaricasCriptografia.dll
 CTF-Esecurity_LaricasCriptografia.dll: PE32 executable (DLL) (console) Intel 80386 Mono/.Net assembly, for MS Windows
 </div>
