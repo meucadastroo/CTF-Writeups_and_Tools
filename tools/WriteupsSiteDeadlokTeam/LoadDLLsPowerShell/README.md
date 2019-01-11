@@ -7,10 +7,10 @@ Tomando como Exemplo de DLL,irei usar uma <a href=”https://github.com/sql3t0/s
  
 <p>Usando o comando <strong>file</strong> na DLL para descobrir a qual arquitetura ela pertence,descobrimos que ela eh x86.</p>
 
-<script type="module">
+<div>
 C:\Users\Sql3t0\Desktop> file CTF-Esecurity_LaricasCriptografia.dll
 CTF-Esecurity_LaricasCriptografia.dll: PE32 executable (DLL) (console) Intel 80386 Mono/.Net assembly, for MS Windows
-</script>
+</div>
 
 <p>Apartir dessa descoberta, agora podemos selecionar a versão correta do <a href=”https://en.wikipedia.org/wiki/Decompiler”>Decompiler</a>,que nesse caso eh o <a href=”https://github.com/0xd4d/dnSpy”>dnSpy x86</a>,que eh um decompileropensource e que estah disponível para download no <strong>Github</strong>.</p>
 
