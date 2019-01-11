@@ -20,12 +20,12 @@ CTF-Esecurity_LaricasCriptografia.dll: PE32 executable (DLL) (console) Intel 803
 <img src="https://github.com/sql3t0/shellterlabsCTF/blob/master/tools/WriteupsSiteDeadlokTeam/LoadDLLsPowerShell/imgs/img_01.png?raw=true" />
  
 <p>Como eh possível perceber,utilizando o dnSpy conseguimos encontrar duas <strong>Classes</strong> dentro do NameSpace <strong>Laricas</strong>:</p>
-<h3>Database()</h3>
+<h3>Database</h3>
 <p>Ollhando a <strong>Classe</strong> <strong>Database</strong> eh facil perceber que ha duas variáveis(<strong>DB_USER</strong>,<strong>DB_PASS</strong>) bem sugestivas e que parecem estar <strong>Encriptadas</strong>.</p>
  
 <img src="https://github.com/sql3t0/shellterlabsCTF/blob/master/tools/WriteupsSiteDeadlokTeam/LoadDLLsPowerShell/imgs/img_02.png?raw=true" />
 
-<h3>Encryption()</h3>
+<h3>Encryption</h3>
 <p>Olhando agora a <strong>Classe</strong><strong>Encryption</strong> podemos notar que existe um <strong>método</strong> chamado <strong>crypt</strong>.</p>
 
 <img src="https://github.com/sql3t0/shellterlabsCTF/blob/master/tools/WriteupsSiteDeadlokTeam/LoadDLLsPowerShell/imgs/img_03.png?raw=true" />
