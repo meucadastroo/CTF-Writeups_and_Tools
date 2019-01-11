@@ -34,23 +34,25 @@ CTF-Esecurity_LaricasCriptografia.dll: PE32 executable (DLL) (console) Intel 803
 
 <p>
 <div>
-byte[] array = new byte[input.Length];
-            for (int i = 0; i < input.Length; i++)
-            {
-                array[i] = (byte)((int)input[i] ^ this._secret[i % this._secret.Length]);
-            }
+byte[] array = new byte[input.Length];<br/>
+            for (int i = 0; i < input.Length; i++)<br/>
+            {<br/>
+                array[i] = (byte)((int)input[i] ^ this._secret[i % this._secret.Length]);<br/>
+            }<br/>
 return array;
 </div>
 </p>
 
-<p>Apartir desse ponto pressupõe-se que os valores das variaves<strong>DB_USER</strong> e <strong>DB_PASS</strong> foram criptografados usando o método <strong>crypt</strong>.</p>
+<p>Apartir desse ponto pressupõe-se que os valores das variaves <strong>DB_USER</strong> e <strong>DB_PASS</strong> foram criptografados usando o método <strong>crypt</strong>.</p>
 
-<p>Sabendo-se que a reversão para criptografia de XOR eh simplismente XOR,então podemos usar o mesmo método que foi utilizado na cifragem para tentar realizar a decifragem.E eh nessa parte onde entra uma dica que pode lhe fazer economizar muito tempo em futuros CTFs que venham a utilizar DLLs.</p>
+<p>Sabendo-se que a reversão para criptografia de XOR eh simplismente XOR,então podemos usar o mesmo método que foi utilizado na cifragem para tentar realizar a decifragem.<br/>
+E eh nessa parte onde entra uma dica que pode lhe fazer economizar muito tempo em futuros CTFs que venham a utilizar DLLs.</p>
 
-<p>Esse dica nada mais eh que usar o <strong>powershell</strong> do Windows para carregar a DLL na memoria e utilizar ela.Tudo isso apartir da linha de comando.</p>
+<p>Esse dica nada mais eh que usar o <strong>powershell</strong> do Windows para <strong>carregar</strong> a DLL na <strong>memoria</strong> e utilizar ela.<br/>
+Tudo isso apartir da linha de comando.</p>
 
-<h3>Como fazerisso<strong>?</strong></h3>
-<p>Usando a classe <strong><a href=”https://docs.microsoft.com/pt-br/dotnet/api/system.reflection.assembly?view=netframework-4.7.2”>System.Reflection.Assembly</a></strong> eh possivelcarregar o conteúdo da DLL, criar objetos das classes e ainda utilizar os seus métodos contidos em cada classe.</p>
+<h3>Como fazer isso<strong>?</strong></h3>
+<p>Usando a classe <strong><a href=”https://docs.microsoft.com/pt-br/dotnet/api/system.reflection.assembly?view=netframework-4.7.2”>System.Reflection.Assembly</a></strong> eh possivel carregar o conteudo da DLL, criar objetos das classes e ainda utilizar os seus metodos contidos em cada classe.</p>
 
 </p>
 <div>
