@@ -26,11 +26,11 @@ CTF-Esecurity_LaricasCriptografia.dll: PE32 executable (DLL) (console) Intel 803
 <img src="https://github.com/sql3t0/shellterlabsCTF/blob/master/tools/WriteupsSiteDeadlokTeam/LoadDLLsPowerShell/imgs/img_02.png?raw=true" />
 
 <h3>Encryption()</h3>
-<p>Olhando agora a <strong>Classe</strong><strong>Encryption</strong> Podemos notar que existe um <strong>método</strong> chamado <strong>crypt</strong>.</p>
+<p>Olhando agora a <strong>Classe</strong><strong>Encryption</strong> podemos notar que existe um <strong>método</strong> chamado <strong>crypt</strong>.</p>
 
 <img src="https://github.com/sql3t0/shellterlabsCTF/blob/master/tools/WriteupsSiteDeadlokTeam/LoadDLLsPowerShell/imgs/img_03.png?raw=true" />
  
-<p>Indo mais a fundo no método <strong>crypt</strong>eh possível deduzir que ele, nada mais ehque , uma variação do algoritimo de <a href=”https://en.wikipedia.org/wiki/XOR_cipher”>XOR</a>.</p>
+<p>Indo mais a fundo no método <strong>crypt</strong> eh possível deduzir que ele nada mais eh que <strong>uma variação do algoritimo de <a href=”https://en.wikipedia.org/wiki/XOR_cipher”>XOR</a></strong>.</p>
 
 <p>
 <div>
