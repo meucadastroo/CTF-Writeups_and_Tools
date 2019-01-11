@@ -8,11 +8,13 @@
  
 <p>Usando o comando <strong>file</strong> na DLL para descobrir a qual arquitetura ela pertence,descobrimos que ela eh x86.</p>
 
+<p>
 <div>
-C:\Users\Sql3t0\Desktop> file CTF-Esecurity_LaricasCriptografia.dll
+C:\Users\Sql3t0\Desktop> file CTF-Esecurity_LaricasCriptografia.dll<br/>
 CTF-Esecurity_LaricasCriptografia.dll: PE32 executable (DLL) (console) Intel 80386 Mono/.Net assembly, for MS Windows
 </div>
-
+</p>
+	
 <p>Apartir dessa descoberta, agora podemos selecionar a versão correta do <a href=”https://en.wikipedia.org/wiki/Decompiler”>Decompiler</a>,que nesse caso eh o <a href=”https://github.com/0xd4d/dnSpy”>dnSpy x86</a>,que eh um decompiler opensource e que estah disponível para download no <strong>Github</strong>.</p>
 
 <img src="https://github.com/sql3t0/shellterlabsCTF/blob/master/tools/WriteupsSiteDeadlokTeam/LoadDLLsPowerShell/imgs/img_01.png?raw=true" />
@@ -30,6 +32,7 @@ CTF-Esecurity_LaricasCriptografia.dll: PE32 executable (DLL) (console) Intel 803
  
 <p>Indo mais a fundo no método <strong>crypt</strong>eh possível deduzir que ele, nada mais ehque , uma variação do algoritimo de <a href=”https://en.wikipedia.org/wiki/XOR_cipher”>XOR</a>.</p>
 
+<p>
 <div>
 byte[] array = new byte[input.Length];
             for (int i = 0; i < input.Length; i++)
@@ -38,6 +41,7 @@ byte[] array = new byte[input.Length];
             }
 return array;
 </div>
+</p>
 
 <p>Apartir desse ponto pressupõe-se que os valores das variaves<strong>DB_USER</strong> e <strong>DB_PASS</strong> foram criptografados usando o método <strong>crypt</strong>.</p>
 
@@ -48,6 +52,7 @@ return array;
 <h3>Como fazerisso<strong>?</strong></h3>
 <p>Usando a classe <strong><a href=”https://docs.microsoft.com/pt-br/dotnet/api/system.reflection.assembly?view=netframework-4.7.2”>System.Reflection.Assembly</a></strong> eh possivelcarregar o conteúdo da DLL, criar objetos das classes e ainda utilizar os seus métodos contidos em cada classe.</p>
 
+</p>
 <div>
 PS C:\Users\Sql3t0\Desktop> $DLLbytes = [System.IO.File]::ReadAllBytes("C:\Users\Sql3t0\Desktop\CTF-Esecurity_LaricasCriptografia.dll")
 PS C:\Users\Sql3t0\Desktop> [System.Reflection.Assembly]::Load($DLLBytes)
@@ -59,23 +64,29 @@ False  v4.0.30319
 
 PS C:\Users\Sql3t0\Desktop>
 </div>
+</p>
 
 <p>Caso queira Listar todos o métodos contidos na DLL recém carregadabasta executar o comando :</p>
 
+<p>
 <div>
 PS C:\Users\Sql3t0\Desktop> [Laricas.Encryption].GetMethods()
 </div>
+</p>
 
 <p>Para criar um <strong>Objeto</sctrong> de uma classe basta executar o comando :</p>
 
+<p>
 <div>
 PS C:\Users\Sql3t0\Desktop>$objeto = New-Object "Laricas.Encryption"
 </div>
+</p>
 
 <p>Onde<strong>Laricas</strong> eh o Namespace e <strong>Encryption</strong> o nome da <strong>Classe</strong>.</p>
 
 <p>Olhando para os valores cifrados podemos deduzir que eles estão em Base64 e teremos que decodificar eles para passarmos como parâmetro no método <strong>crypt</strong>.</p>
 
+<p>
 <div>
 public class Database
     {
@@ -86,22 +97,28 @@ public class Database
         public string DB_PASS = "UhFBCm4MVBFpCnwMUhFzCmAMaBFxCnkMThFiCn8MWBEvCnsMQBF8CjgMUxFvCg==";
     }
 </div>
-
+</p>
+	
 <p>Para isso usaremos o comando :</p>
 
+<p>
 <div>
 PS C:\Users\Sql3t0\Desktop> $string = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("UhFBCm4MVBFpCnwMUhFzCmAMaBFxCnkMThFiCn8MWBEvCnsMQBF8CjgMUxFvCg==")
 </div>
+</p>
 
 <p>Sequencialmentecodificaremos a <strong>$string</strong> para <strong>UTF-8</strong> :</p>
 
+<p>
 <div>
 PS C:\Users\Sql3t0\Desktop> $enc = [system.Text.Encoding]::UTF8
 PS C:\Users\Sql3t0\Desktop> $data = $enc.GetBytes($string)
 </div>
+</p>
 
 <p>E entao chamamos o método <strong>crypt</strong> para decodificar,salvando o resultado em uma outra variável na qual codificaremos o resultado em <strong>ASCII</strong> para ser finalmente impresso na tela:</p>
 
+<p>
 <div>
 PS C:\Users\Sql3t0\Desktop> $array = $objeto.crypt($data)
 PS C:\Users\Sql3t0\Desktop> $enc = [System.Text.Encoding]::ASCII
@@ -109,6 +126,7 @@ PS C:\Users\Sql3t0\Desktop> $enc.GetString($array)
 e S e c { w e a k _ c r y p t o = p w n 3 d }
 PS C:\Users\Sql3t0\Desktop>
 </div>
+</p>
 
 <img src="https://github.com/sql3t0/shellterlabsCTF/blob/master/tools/WriteupsSiteDeadlokTeam/LoadDLLsPowerShell/imgs/img_04.png?raw=true" />
 
@@ -120,6 +138,7 @@ PS C:\Users\Sql3t0\Desktop>
 
 <p>Codigofinal :</p>
 
+<p>
 <div>
 if($args.count -eq 2){
 	$DLLName = $args[0]
@@ -138,3 +157,4 @@ if($args.count -eq 2){
 	echo "Usage : script.ps1 DLLNameStringToDecode"
 }	
 </div>
+</p>
