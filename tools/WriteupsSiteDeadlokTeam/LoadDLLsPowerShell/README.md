@@ -109,7 +109,7 @@ PS C:\Users\Sql3t0\Desktop> $string = [System.Text.Encoding]::UTF8.GetString([Sy
 </div>
 </p>
 --------------------------------------------------------------------------------------------------------------------------------------
-<p>Sequencialmentecodificaremos a <strong>$string</strong> para <strong>UTF-8</strong> :</p>
+<p>Sequencialmente codificaremos a <strong>$string</strong> para <strong>UTF-8</strong> :</p>
 --------------------------------------------------------------------------------------------------------------------------------------
 <p>
 <div>
