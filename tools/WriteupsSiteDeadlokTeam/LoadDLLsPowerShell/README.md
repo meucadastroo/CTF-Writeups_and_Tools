@@ -1,7 +1,8 @@
 <strong>Olah caros leitores !!</strong>
 
-<p>Hoje estou aqui para falar um pouco sobre <strong>DLLs</strong>. Mais exatamente sobre alguns Desafios de <strong>CTF</strong> que envolvem  <strong>reverse</strong> em DLLs.
-Tomando como Exemplo de DLL irei usar uma <a href=”https://github.com/sql3t0/shellterlabsCTF/blob/master/tools/LoadDLL/CTF-Esecurity_LaricasCriptografia.dll?raw=true”>DLL</a> de um desafio que ocorreu no CTF da <a href=”https://ctf.esecurity.com.br”>Esecurity</a> de 2018.</p> 
+<p>Hoje estou aqui para falar um pouco sobre <strong>DLLs</strong>. Mais exatamente sobre alguns Desafios de <strong>CTF</strong> que envolvem  <strong>reverse</strong> em DLLs.</p>
+
+<p>Tomando como Exemplo de DLL irei usar uma <a href=”https://github.com/sql3t0/shellterlabsCTF/blob/master/tools/LoadDLL/CTF-Esecurity_LaricasCriptografia.dll?raw=true”>DLL</a> de um desafio que ocorreu no CTF da <a href=”https://ctf.esecurity.com.br”>Esecurity</a> de 2018.</p> 
 
 <img src="https://github.com/sql3t0/shellterlabsCTF/blob/master/tools/WriteupsSiteDeadlokTeam/LoadDLLsPowerShell/imgs/img_00.png?raw=true" />
  
