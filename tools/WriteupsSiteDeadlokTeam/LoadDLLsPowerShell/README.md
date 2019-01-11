@@ -48,15 +48,15 @@ return array;
 <p>Sabendo-se que a reversão para criptografia de XOR eh simplismente XOR,então podemos usar o mesmo método que foi utilizado na cifragem para tentar realizar a decifragem.<br/>
 E eh nessa parte onde entra uma dica que pode lhe fazer economizar muito tempo em futuros CTFs que venham a utilizar DLLs.</p>
 
-<p>Esse dica nada mais eh que usar o <strong>powershell</strong> do Windows para <strong>carregar</strong> a DLL na <strong>memoria</strong> e utilizar ela.<br/>
-Tudo isso apartir da linha de comando.</p>
+<p>Esse dica nada mais eh que usar o <strong>powershell</strong> do Windows para <strong>carregar</strong> a DLL na <strong>memoria</strong> e utilizar ela.Tudo isso apartir da linha de comando.</p>
 
-<h3>Como fazer isso<strong>?</strong></h3>
+<h3>Como fazer isso<strong> ?</strong></h3>
 <p>Usando a classe <strong><a href=”https://docs.microsoft.com/pt-br/dotnet/api/system.reflection.assembly?view=netframework-4.7.2”>System.Reflection.Assembly</a></strong> eh possivel carregar o conteudo da DLL, criar objetos das classes e ainda utilizar os seus metodos contidos em cada classe.</p>
 
 </p>
-<div>
+<div>---
 PS C:\Users\Sql3t0\Desktop> $DLLbytes = [System.IO.File]::ReadAllBytes("C:\Users\Sql3t0\Desktop\CTF-Esecurity_LaricasCriptografia.dll")
+<br/>
 PS C:\Users\Sql3t0\Desktop> [System.Reflection.Assembly]::Load($DLLBytes)
 
 GAC    Version        Location
@@ -65,7 +65,7 @@ False  v4.0.30319
 
 
 PS C:\Users\Sql3t0\Desktop>
-</div>
+</div>---
 </p>
 
 <p>Caso queira Listar todos o métodos contidos na DLL recém carregadabasta executar o comando :</p>
