@@ -76,7 +76,7 @@ PS C:\Users\Sql3t0\Desktop> [Laricas.Encryption].GetMethods()
 </div>
 </p>
 --------------------------------------------------------------------------------------------------------------------------------------
-<p>Para criar um <strong>Objeto</sctrong> de uma Classe basta executar o comando :</p>
+<p>Para criar um <strong>Objeto</strong> de uma Classe basta executar o comando :</p>
 --------------------------------------------------------------------------------------------------------------------------------------
 <p>
 <div>
