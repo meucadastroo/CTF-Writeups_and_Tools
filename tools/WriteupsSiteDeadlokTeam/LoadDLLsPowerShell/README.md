@@ -1,3 +1,5 @@
+<!doctype html>
+<html lang="en">
 <strong>Olah caros leitores !!</strong>
 
 <p>Hoje estou aqui para falar um pouco sobre <strong>DLLs</strong>. Mais especificamente sobre alguns Desafios de <strong>CTF</strong> que envolvem  <strong>reverse</strong> em DLLs.
