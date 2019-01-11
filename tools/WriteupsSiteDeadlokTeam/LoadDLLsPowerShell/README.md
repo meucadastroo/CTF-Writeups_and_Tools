@@ -14,18 +14,18 @@ CTF-Esecurity_LaricasCriptografia.dll: PE32 executable (DLL) (console) Intel 803
 
 <p>Apartir dessa descoberta, agora podemos selecionar a versão correta do <a href=”https://en.wikipedia.org/wiki/Decompiler”>Decompiler</a>,que nesse caso eh o <a href=”https://github.com/0xd4d/dnSpy”>dnSpy x86</a>,que eh um decompileropensource e que estah disponível para download no <strong>Github</strong>.</p>
 
-<img src="" />
+<img src="https://github.com/sql3t0/shellterlabsCTF/blob/master/tools/WriteupsSiteDeadlokTeam/LoadDLLsPowerShell/imgs/img_01.png?raw=true" />
  
 <p>Como eh possível perceber,utilizando o dnSpy conseguimos encontrar duas <strong>Classes</strong> dentro do NameSpace<strong>Laricas</strong>:</p>
 <h3>Database()</h3>
 <p>Ollhando a <strong>Classe</strong><strong>Database</strong>ehfacil perceber que a duas variáveis(<strong>DB_USER</strong>,<strong>DB_PASS</strong>) bem sugestivas e que parecem estar <strong>Encriptadas</strong>.</p>
  
-<img src="" />
+<img src="https://github.com/sql3t0/shellterlabsCTF/blob/master/tools/WriteupsSiteDeadlokTeam/LoadDLLsPowerShell/imgs/img_02.png?raw=true" />
 
 <h3>Encryption()</h3>
 <p>Olhando agora a <strong>Classe</strong><strong>Encryption</strong> Podemos notar que existe um <strong>método</strong> chamado <strong>crypt</strong>.</p>
 
-<img src="" />
+<img src="https://github.com/sql3t0/shellterlabsCTF/blob/master/tools/WriteupsSiteDeadlokTeam/LoadDLLsPowerShell/imgs/img_03.png?raw=true" />
  
 <p>Indo mais a fundo no método <strong>crypt</strong>eh possível deduzir que ele, nada mais ehque , uma variação do algoritimo de <a href=”https://en.wikipedia.org/wiki/XOR_cipher”>XOR</a>.</p>
 
@@ -109,7 +109,7 @@ e S e c { w e a k _ c r y p t o = p w n 3 d }
 PS C:\Users\Sql3t0\Desktop>
 </div>
 
-<img src="" />
+<img src="https://github.com/sql3t0/shellterlabsCTF/blob/master/tools/WriteupsSiteDeadlokTeam/LoadDLLsPowerShell/imgs/img_04.png?raw=true" />
 
 <p>E eh isso aewpessoal !!</p>
 
@@ -137,23 +137,3 @@ if($args.count -eq 2){
 	echo "Usage : script.ps1 DLLNameStringToDecode"
 }	
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
