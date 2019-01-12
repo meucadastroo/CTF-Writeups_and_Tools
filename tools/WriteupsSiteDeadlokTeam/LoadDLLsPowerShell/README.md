@@ -31,20 +31,16 @@ CTF-Esecurity_LaricasCriptografia.dll: PE32 executable (DLL) (console) Intel 803
 <img src="https://github.com/sql3t0/shellterlabsCTF/blob/master/tools/WriteupsSiteDeadlokTeam/LoadDLLsPowerShell/imgs/img_03.png?raw=true" />
  
 <p>Indo mais a fundo no método <strong>crypt</strong> eh possível deduzir que ele nada mais eh que <strong>uma variação do algoritimo de <a href=”https://en.wikipedia.org/wiki/XOR_cipher”>XOR</a></strong>.</p>
---------------------------------------------------------------------------------------------------------------------------------------
-<p>
-<div>
-```cs
-byte[] array = new byte[input.Length];<br/>
-            for (int i = 0; i < input.Length; i++)<br/>
-            {<br/>
-                array[i] = (byte)((int)input[i] ^ this._secret[i % this._secret.Length]);<br/>
-            }<br/>
+
+```
+byte[] array = new byte[input.Length];
+            for (int i = 0; i < input.Length; i++)
+            {
+                array[i] = (byte)((int)input[i] ^ this._secret[i % this._secret.Length]);
+            }
 return array;
 ```
-</div>
-</p>
---------------------------------------------------------------------------------------------------------------------------------------
+
 <p>Apartir desse ponto pressupõe-se que os valores das variaves <strong>DB_USER</strong> e <strong>DB_PASS</strong> foram criptografados usando o método <strong>crypt</strong>.</p>
 
 <p>Sabendo-se que a reversão para criptografia de XOR eh simplismente XOR,então podemos usar o mesmo método que foi utilizado na cifragem para tentar realizar a decifragem.<br/>
@@ -54,9 +50,7 @@ E eh nessa parte onde entra uma dica que pode lhe fazer economizar muito tempo e
 
 <h3>Como fazer isso<strong> ?</strong></h3>
 <p>Usando a classe <strong><a href=”https://docs.microsoft.com/pt-br/dotnet/api/system.reflection.assembly?view=netframework-4.7.2”>System.Reflection.Assembly</a></strong> eh possivel carregar o conteudo da DLL, criar objetos das classes e ainda utilizar os seus metodos contidos em cada classe.</p>
---------------------------------------------------------------------------------------------------------------------------------------
-</p>
-<div>
+```
 PS C:\Users\Sql3t0\Desktop> $DLLbytes = [System.IO.File]::ReadAllBytes("C:\Users\Sql3t0\Desktop\CTF-Esecurity_LaricasCriptografia.dll")
 <br/>
 PS C:\Users\Sql3t0\Desktop> [System.Reflection.Assembly]::Load($DLLBytes)
@@ -67,9 +61,7 @@ False  v4.0.30319
 
 
 PS C:\Users\Sql3t0\Desktop>
-</div>
-</p>
---------------------------------------------------------------------------------------------------------------------------------------
+```
 <p>Caso queira <strong>Listar</strong> todos o métodos contidos na DLL recém carregada basta executar o comando :</p>
 --------------------------------------------------------------------------------------------------------------------------------------
 <p>
