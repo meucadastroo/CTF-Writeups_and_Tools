@@ -34,13 +34,14 @@ CTF-Esecurity_LaricasCriptografia.dll: PE32 executable (DLL) (console) Intel 803
 --------------------------------------------------------------------------------------------------------------------------------------
 <p>
 <div>
-//D
+```cs
 byte[] array = new byte[input.Length];<br/>
             for (int i = 0; i < input.Length; i++)<br/>
             {<br/>
                 array[i] = (byte)((int)input[i] ^ this._secret[i % this._secret.Length]);<br/>
             }<br/>
 return array;
+```
 </div>
 </p>
 --------------------------------------------------------------------------------------------------------------------------------------
