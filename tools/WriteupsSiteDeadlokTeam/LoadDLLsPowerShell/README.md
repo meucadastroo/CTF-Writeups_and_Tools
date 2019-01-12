@@ -50,6 +50,7 @@ E eh nessa parte onde entra uma dica que pode lhe fazer economizar muito tempo e
 
 <h3>Como fazer isso<strong> ?</strong></h3>
 <p>Usando a classe <strong><a href=”https://docs.microsoft.com/pt-br/dotnet/api/system.reflection.assembly?view=netframework-4.7.2”>System.Reflection.Assembly</a></strong> eh possivel carregar o conteudo da DLL, criar objetos das classes e ainda utilizar os seus metodos contidos em cada classe.</p>
+
 ```
 PS C:\Users\Sql3t0\Desktop> $DLLbytes = [System.IO.File]::ReadAllBytes("C:\Users\Sql3t0\Desktop\CTF-Esecurity_LaricasCriptografia.dll")
 <br/>
@@ -62,28 +63,24 @@ False  v4.0.30319
 
 PS C:\Users\Sql3t0\Desktop>
 ```
+
 <p>Caso queira <strong>Listar</strong> todos o métodos contidos na DLL recém carregada basta executar o comando :</p>
---------------------------------------------------------------------------------------------------------------------------------------
-<p>
-<div>
+
+```
 PS C:\Users\Sql3t0\Desktop> [Laricas.Encryption].GetMethods()
-</div>
-</p>
---------------------------------------------------------------------------------------------------------------------------------------
+```
+
 <p>Para criar um <strong>Objeto</strong> de uma Classe basta executar o comando :</p>
---------------------------------------------------------------------------------------------------------------------------------------
-<p>
-<div>
+
+```
 PS C:\Users\Sql3t0\Desktop>$objeto = New-Object "Laricas.Encryption"
-</div>
-</p>
---------------------------------------------------------------------------------------------------------------------------------------
+```
+
 <p>Onde<strong>Laricas</strong> eh o <strong>Namespace</strong> e <strong>Encryption</strong> o nome da <strong>Classe</strong>.</p>
 
 <p>Olhando para os valores cifrados podemos deduzir que eles estao em Base64 e teremos que decodificar eles antes de passarmos como parâmetro no método <strong>crypt</strong>.</p>
---------------------------------------------------------------------------------------------------------------------------------------
-<p>
-<div>
+
+```
 public class Database<br/>
 {
     // Token: 0x04000001 RID: 1<br/>
@@ -92,38 +89,31 @@ public class Database<br/>
     // Token: 0x04000002 RID: 2<br/>
     public string DB_PASS = "UhFBCm4MVBFpCnwMUhFzCmAMaBFxCnkMThFiCn8MWBEvCnsMQBF8CjgMUxFvCg==";<br/>
 }
-</div>
-</p>
---------------------------------------------------------------------------------------------------------------------------------------	
+```
+
 <p>Para isso usaremos o comando :</p>
---------------------------------------------------------------------------------------------------------------------------------------
-<p>
-<div>
+
+```
 PS C:\Users\Sql3t0\Desktop> $string = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("UhFBCm4MVBFpCnwMUhFzCmAMaBFxCnkMThFiCn8MWBEvCnsMQBF8CjgMUxFvCg==")
-</div>
-</p>
---------------------------------------------------------------------------------------------------------------------------------------
+```
+
 <p>Sequencialmente codificaremos a <strong>$string</strong> para <strong>UTF-8</strong> :</p>
---------------------------------------------------------------------------------------------------------------------------------------
-<p>
-<div>
+
+```
 PS C:\Users\Sql3t0\Desktop> $enc = [system.Text.Encoding]::UTF8<br/>
 PS C:\Users\Sql3t0\Desktop> $data = $enc.GetBytes($string)
-</div>
-</p>
---------------------------------------------------------------------------------------------------------------------------------------
+```
+
 <p>E entao chamamos o método <strong>crypt</strong> para decodificar,salvando o resultado em uma outra variável na qual codificaremos o resultado em <strong>ASCII</strong> para ser finalmente impresso na tela:</p>
---------------------------------------------------------------------------------------------------------------------------------------
-<p>
-<div>
+
+```
 PS C:\Users\Sql3t0\Desktop> $array = $objeto.crypt($data)<br/>
 PS C:\Users\Sql3t0\Desktop> $enc = [System.Text.Encoding]::ASCII<br/>
 PS C:\Users\Sql3t0\Desktop> $enc.GetString($array)<br/>
 e S e c { w e a k _ c r y p t o = p w n 3 d }<br/>
 PS C:\Users\Sql3t0\Desktop>
-</div>
-</p>
---------------------------------------------------------------------------------------------------------------------------------------
+```
+
 <img src="https://github.com/sql3t0/shellterlabsCTF/blob/master/tools/WriteupsSiteDeadlokTeam/LoadDLLsPowerShell/imgs/img_04.png?raw=true" />
 
 <p>E eh isso aew pessoal !!</p>
@@ -133,9 +123,8 @@ PS C:\Users\Sql3t0\Desktop>
 <p>\m/...<strong>Hack_Never_Ends</strong>...\m/</p>
 
 <p>Codigo final :</p>
---------------------------------------------------------------------------------------------------------------------------------------
-<p>
-<div>
+
+```
 if($args.count -eq 2){<br/>
 	$DLLName = $args[0]<br/>
 	$DLLbytes = [System.IO.File]::ReadAllBytes($DLLName)<br/>
@@ -152,6 +141,4 @@ if($args.count -eq 2){<br/>
 }else{<br/>
 	echo "Usage : script.ps1 DLLNameStringToDecode"<br/>
 }<br/>	
-</div>
-</p>
---------------------------------------------------------------------------------------------------------------------------------------
+```
