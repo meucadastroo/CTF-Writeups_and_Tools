@@ -91,13 +91,13 @@ PS C:\Users\Sql3t0\Desktop>$objeto = New-Object "Laricas.Encryption"
 <p>
 <div>
 public class Database<br/>
-    {
-        // Token: 0x04000001 RID: 1<br/>
-        public string DB_USER = "exFzCnkMXhFxCmoMRBFWCkkM";<br/>
+{
+    // Token: 0x04000001 RID: 1<br/>
+    public string DB_USER = "exFzCnkMXhFxCmoMRBFWCkkM";<br/>
 
-        // Token: 0x04000002 RID: 2<br/>
-        public string DB_PASS = "UhFBCm4MVBFpCnwMUhFzCmAMaBFxCnkMThFiCn8MWBEvCnsMQBF8CjgMUxFvCg==";<br/>
-    }
+    // Token: 0x04000002 RID: 2<br/>
+    public string DB_PASS = "UhFBCm4MVBFpCnwMUhFzCmAMaBFxCnkMThFiCn8MWBEvCnsMQBF8CjgMUxFvCg==";<br/>
+}
 </div>
 </p>
 --------------------------------------------------------------------------------------------------------------------------------------	
