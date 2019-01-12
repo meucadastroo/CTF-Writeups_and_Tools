@@ -32,6 +32,7 @@ CTF-Esecurity_LaricasCriptografia.dll: PE32 executable (DLL) (console) Intel 803
  
 <p>Indo mais a fundo no método <strong>crypt</strong> eh possível deduzir que ele nada mais eh que <strong>uma variação do algoritimo de <a href=”https://en.wikipedia.org/wiki/XOR_cipher”>XOR</a></strong>.</p>
 --------------------------------------------------------------------------------------------------------------------------------------
+```csharp
 <p>
 <div>
 byte[] array = new byte[input.Length];<br/>
@@ -42,6 +43,7 @@ byte[] array = new byte[input.Length];<br/>
 return array;
 </div>
 </p>
+```
 --------------------------------------------------------------------------------------------------------------------------------------
 <p>Apartir desse ponto pressupõe-se que os valores das variaves <strong>DB_USER</strong> e <strong>DB_PASS</strong> foram criptografados usando o método <strong>crypt</strong>.</p>
 
