@@ -7,14 +7,12 @@
 <img src="https://github.com/sql3t0/shellterlabsCTF/blob/master/tools/WriteupsSiteDeadlokTeam/LoadDLLsPowerShell/imgs/img_00.png?raw=true" />
  
 <p>Usando o comando <strong>file</strong> na DLL para descobrir a qual arquitetura ela pertence,descobrimos que ela eh x86.</p>
---------------------------------------------------------------------------------------------------------------------------------------
-<p>
-<div>
+
+```
 C:\Users\Sql3t0\Desktop> file CTF-Esecurity_LaricasCriptografia.dll<br/>
 CTF-Esecurity_LaricasCriptografia.dll: PE32 executable (DLL) (console) Intel 80386 Mono/.Net assembly, for MS Windows
-</div>
-</p>
---------------------------------------------------------------------------------------------------------------------------------------	
+```
+
 <p>Apartir dessa descoberta, agora podemos selecionar a versão correta do <a href=”https://en.wikipedia.org/wiki/Decompiler”>Decompiler</a>,que nesse caso eh o <a href=”https://github.com/0xd4d/dnSpy”>dnSpy x86</a>,que eh um decompiler opensource e que estah disponível para download no <strong>Github</strong>.</p>
 
 <img src="https://github.com/sql3t0/shellterlabsCTF/blob/master/tools/WriteupsSiteDeadlokTeam/LoadDLLsPowerShell/imgs/img_01.png?raw=true" />
