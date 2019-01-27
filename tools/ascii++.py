@@ -1,15 +1,22 @@
 #vguvauetkrv
+#vguvauetkrv
 import sys
 
 def ascii_pp(msg):
 	r=''
 	for i in range(len(msg)):
-		r+= chr(ord(msg[i])+i)
+		try:
+			r+= chr(ord(msg[i])+i)
+		except Exception as e:
+			pass
 	print r
 
 	r=''
 	for i in range(len(msg)):
-		r+= chr(ord(msg[i])-i)
+		try:
+			r+= chr(ord(msg[i])-i)
+		except Exception as e:
+			pass
 	print r
 
 	for i in range(255):
