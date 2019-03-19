@@ -13,6 +13,7 @@ L2I_Lo = dict(zip("abcdefghijklmnopqrstuvwxyz",range(26)))
 I2L_Lo = dict(zip(range(26),"abcdefghijklmnopqrstuvwxyz"))
 
 def cipher(ciphertext):
+	#print "------------ROTATE ASCII CHARS------------"
 	plaintext = ""
 	for i in range(26):
 		for c in ciphertext:
@@ -26,11 +27,20 @@ def cipher(ciphertext):
 		plaintext = plaintext + "\n"     	
 	
 	return plaintext
-	   	
+
+def rotateASCIIvalues(ciphertext):
+	#print "------------ROTATE ASCII VALUES------------"
+	for x in range(26):
+		try:
+			print ''.join([chr(ord(i)+x) for i in ciphertext])
+		except Exception as e:
+			pass
+
 if len(sys.argv) <= 1 :
 	if not sys.stdin.isatty():
 		data = sys.stdin.read()
 		print cipher(data.replace('\n',''))
+		rotateASCIIvalues(data.replace('\n',''))
 	else:
 		print('Usage : scriptname.py "string_sequency"')
 		print('      : or ')
@@ -42,3 +52,5 @@ else:
 		data = sys.argv[1]
 	
 	print cipher(data.replace('\n',''))
+	rotateASCIIvalues(data.replace('\n',''))
+
