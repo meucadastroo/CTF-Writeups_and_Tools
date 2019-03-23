@@ -81,33 +81,37 @@ def decryptFence(cipher, rails, offset=0, debug=False):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        print "Usage: %s [-e|-d] string"
-    else:
+    if not sys.stdin.isatty():
+        text = sys.stdin.read().replace('\n','')
+    elif len(sys.argv) > 2:
         text = sys.argv[2]
-        if sys.argv[1] == "-d":
-            decoded = []
-            for x in range(len(text)):
-                for y in range(len(text)):
-                    try:
-                        c = decryptFence(text, x, offset=y, debug=False)
-                        if len(c) == len(text):
-                            decoded.append(c)
-                    except Exception as e:
-                        pass
+    else:
+        print '[>] Usage: %s ( -e or -d ) "text"'%sys.argv[0]
+        exit()
 
-            for i in list(set(decoded)):
-                print i 
-        if sys.argv[1] == "-e":
-            encoded = []
-            for x in range(len(text)):
-                for y in range(len(text)):
-                    try:
-                        c = encryptFence(text, x, offset=y, debug=False)
-                        if len(c) == len(text):
-                            encoded.append(c)
-                    except Exception as e:
-                        pass
+    if sys.argv[1] == "-d":
+        decoded = []
+        for x in range(len(text)):
+            for y in range(len(text)):
+                try:
+                    c = decryptFence(text, x, offset=y, debug=False)
+                    if len(c) == len(text):
+                        decoded.append(c)
+                except Exception as e:
+                    pass
 
-            for i in list(set(encoded)):
-                print i 
+        for i in list(set(decoded)):
+            print i 
+    if sys.argv[1] == "-e":
+        encoded = []
+        for x in range(len(text)):
+            for y in range(len(text)):
+                try:
+                    c = encryptFence(text, x, offset=y, debug=False)
+                    if len(c) == len(text):
+                        encoded.append(c)
+                except Exception as e:
+                    pass
+
+        for i in list(set(encoded)):
+            print i 
