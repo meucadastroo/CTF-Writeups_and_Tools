@@ -39,6 +39,13 @@ def login(s,mail,passwd):
 if __name__ == '__main__':
 	if len(sys.argv) < 2:
 		print '[!] Usage: %s listfile'%sys.argv[0]
+		print """
+# style from lines in file to read
+# e.g:
+# 	  filename.txt
+#		email1@gmail.com;passwd1
+#		email2@yahoo.com;passwd2
+#		continue..."""
 	else:
 		for l in open(sys.argv[1]):
 			dataLogin = l.replace('\n','').split(';')  
