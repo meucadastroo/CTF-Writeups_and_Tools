@@ -6,7 +6,7 @@
 # e.g:
 # 	  filename.txt
 #		email1@gmail.com;passwd1
-#		email1@yahoo.com;passwd2
+#		email2@yahoo.com;passwd2
 #		continue...
 #
 # Usage: python scriptname.py filename.txt
