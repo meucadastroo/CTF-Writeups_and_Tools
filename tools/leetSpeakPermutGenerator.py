@@ -1,6 +1,5 @@
-#!/usr/bin/env python
 # coding=utf-8
-# By Sql3t0
+
 import argparse
 
 '''
@@ -31,8 +30,7 @@ leetDict = {
   'x': ['><','}{'],
   'y': ['`/',"'/",'j'],
   'z': ['2','(\\)']
-}
-'''
+}'''
 
 leetDict = {
   'a': ['4','@'],
@@ -75,7 +73,10 @@ pplf = open(args.output_file, "w")
 print 'Working...'
 
 for profaneWord in profaneWords:
-  pplf.writelines([p + '\n' for p in permute(profaneWord)])
+  try:
+    pplf.writelines([p + '\n' for p in permute(profaneWord)])
+  except Exception as e:
+    pass
 
 pplf.close()
 
