@@ -1,0 +1,1 @@
+netsh advfirewall firewall add rule name="disablePort9090" protocol=TCP dir=in interfacetype=any localport=9090 action=block
