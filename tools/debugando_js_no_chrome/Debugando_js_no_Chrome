@@ -12,7 +12,7 @@ Para ter acesso ao debugger:
 *   Ative as ferramentas de desenvolvedor com F12 ou Cmd+Opt+I
 *   Selecione a opção Sources no painel.
 
-![](https://raw.githubusercontent.com/sql3t0/shellterlabsCTF/master/tools/debugando_js_no_chrome/1.png)
+![](1.png)
 
 Feito isso você chegara nesse ponto da imagem acima e claramente é possível perceber que a janela é dividida e 3 partes.
 
