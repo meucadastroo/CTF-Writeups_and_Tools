@@ -5,6 +5,189 @@ Hoje estou aqui pra falar sobre a utilidade da ferramenta de debug que a grande 
 
 Estarei usando o Google Chrome como browser para mostrar o básico do debugger, pois o conteúdo em seu total é muito extenso, mas caso se interesse no assunto, a Google disponibiliza de fácil acesso seus manuais.
 
+Estarei usando também o conteúdo do script **index.html** abaixo como exemplo.
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Page Title</title>
+</head>
+<body>
+	<h1>My First Debug</h1>
+	<p>My first paragraph.</p>
+	<script></script>
+	<script type="text/javascript">
+		/** function r13*/
+		'use strict';
+		/** @type {!Array} */
+		var _0x396a = ["shift", "0x2", "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm", "indexOf", "0x0", "0x3", "0x4", "0xa", "0xb", "0xc", "0xd", "0xe", "ireqnqrven synt", "split", "map", "push", "use strict", "rfgn ", ": SyntSebzQroht", "0x1", "0x5", "0x6", "0x8", "0x9", "title", "join", "0x7", "0x10", "0x11", "0x12"];
+		(function(data, i) {
+		  /**
+		   * @param {number} isLE
+		   * @return {undefined}
+		   */
+		   var write = function(isLE) {
+		   	for (; --isLE;) {
+		   		data["push"](data["shift"]());
+		   	}
+		   };
+		   write(++i);
+		})(_0x396a, 186);
+		/**
+		 * @param {string} i
+		 * @param {?} parameter1
+		 * @return {?}
+		 */
+		 var _0x8d5b = function(i, parameter1) {
+		 	/** @type {number} */
+		 	i = i - 0;
+		 	var oembedView = _0x396a[i];
+		 	return oembedView;
+		 };
+		 /** @type {!Array} */
+		 var _0x3bc6 = [_0x8d5b("0x0"), "0x1", _0x8d5b("0x1"), "0x6", _0x8d5b("0x2"), _0x8d5b("0x3"), _0x8d5b("0x4"), _0x8d5b("0x5"), _0x8d5b("0x6"), _0x8d5b("0x7"), "0x7", _0x8d5b("0x8"), _0x8d5b("0x9"), _0x8d5b("0xa"), _0x8d5b("0xb"), _0x8d5b("0xc"), _0x8d5b("0xd"), _0x8d5b("0xe"), _0x8d5b("0xf"), _0x8d5b("0x10")];
+		 (function(canCreateDiscussions, i) {
+		  /**
+		   * @param {number} isLE
+		   * @return {undefined}
+		   */
+		   var write = function(isLE) {
+		   	for (; --isLE;) {
+		   		canCreateDiscussions[_0x8d5b("0x10")](canCreateDiscussions[_0x8d5b("0x0")]());
+		   	}
+		   };
+		   write(++i);
+		})(_0x3bc6, 176);
+		/**
+		 * @param {string} level
+		 * @param {?} ai_test
+		 * @return {?}
+		 */
+		 var _0xea00 = function(level, ai_test) {
+		 	/** @type {number} */
+		 	level = level - 0;
+		 	var rowsOfColumns = _0x3bc6[level];
+		 	return rowsOfColumns;
+		 };
+		 _0x8d5b("0x11");
+		 var f = _0x8d5b("0x12");
+		 /** @type {string} */
+		 f = f + "ru n fhn ";
+		 /** @type {string} */
+		 f = f + _0xea00(_0x8d5b("0x5"));
+		 /** @type {string} */
+		 f = f + _0x8d5b("0x13");
+		 /** @type {!Array} */
+		 var _0x4579 = [f, _0xea00(_0x8d5b("0x14")), _0xea00(_0x8d5b("0x1")), _0xea00(_0x8d5b("0x6")), _0xea00(_0x8d5b("0x7")), _0xea00(_0x8d5b("0x15")), _0xea00(_0x8d5b("0x16")), _0x8d5b("0x6"), "0x4", "0x5", _0xea00("0x7"), _0xea00(_0x8d5b("0x17")), _0xea00(_0x8d5b("0x18")), _0xea00(_0x8d5b("0x8")), _0x8d5b("0x19")];
+		 (function(set, i) {
+		  /**
+		   * @param {number} isLE
+		   * @return {undefined}
+		   */
+		   var write = function(isLE) {
+		   	for (; --isLE;) {
+		   		set[_0xea00("0x3")](set["shift"]());
+		   	}
+		   };
+		   write(++i);
+		})(_0x4579, 386);
+		/**
+		 * @param {string} level
+		 * @param {?} ai_test
+		 * @return {?}
+		 */
+		 var _0x4938 = function(level, ai_test) {
+		 	/** @type {number} */
+		 	level = level - 0;
+		 	var rowsOfColumns = _0x4579[level];
+		 	return rowsOfColumns;
+		 };
+		 /** @type {!Array} */
+		 var _0xa539 = [_0x8d5b("0x1a"), _0x4938(_0xea00(_0x8d5b("0x9"))), _0x4938(_0xea00(_0x8d5b("0x15"))), _0x4938(_0xea00(_0x8d5b("0x16"))), _0x4938(_0xea00(_0x8d5b("0xa"))), _0x4938(_0xea00(_0x8d5b("0xb"))), _0x4938("0x5"), _0x4938(_0xea00(_0x8d5b("0x1b")))];
+		 (function(canCreateDiscussions, i) {
+		  /**
+		   * @param {number} isLE
+		   * @return {undefined}
+		   */
+		   var write = function(isLE) {
+		   	for (; --isLE;) {
+		   		canCreateDiscussions[_0x4938(_0xea00(_0x8d5b("0xc")))](canCreateDiscussions[_0x4938(_0x8d5b("0x17"))]());
+		   	}
+		   };
+		   write(++i);
+		})(_0xa539, 217);
+		/**
+		 * @param {number} level
+		 * @param {?} ai_test
+		 * @return {?}
+		 */
+		 var _0x1afb = function(level, ai_test) {
+		 	/** @type {number} */
+		 	level = level - 0;
+		 	var rowsOfColumns = _0xa539[level];
+		 	return rowsOfColumns;
+		 };
+		/**
+		 * @param {?} a
+		 * @return {?}
+		 */
+		 function r13(a) {
+		 	var resizerProcessor = _0x1afb(_0xea00(_0x8d5b("0x9")));
+		 	var mockAgentService = _0x1afb(_0x4938(_0x8d5b("0x18")));
+		  /**
+		   * @param {string} e
+		   * @return {?}
+		   */
+		   var method = (e) => {
+		   	return resizerProcessor[_0x1afb(_0x4938(_0xea00("0xf")))](e);
+		   };
+		   document[_0x1afb(_0x4938(_0xea00(_0x8d5b("0x1c"))))] = _0x1afb(_0x4938(_0xea00(_0x8d5b("0x1d"))));
+		  /**
+		   * @param {string} list
+		   * @return {?}
+		   */
+		   var addElementMethods = (list) => {
+		   	return method(list) > -1 ? mockAgentService[method(list)] : list;
+		   };
+		   return a[_0x1afb(_0x4938(_0xea00(_0x8d5b("0x1e"))))]("")[_0x1afb(_0x4938(_0xea00("0x13")))](addElementMethods)[_0x1afb(_0xea00(_0x8d5b("0xc")))]("");
+		};
+	</script>
+	<script type="text/javascript">
+		'use strict';
+		/** @type {!Array} */
+		var _0x2f96 = ["title", "ununununuununununuununununuununununu! Rfgn ru n fhn synt{syntsnxrsynt} ?"];
+		(function(data, i) {
+		  /**
+		   * @param {number} isLE
+		   * @return {undefined}
+		   */
+		   var write = function(isLE) {
+		   	for (; --isLE;) {
+		   		data["push"](data["shift"]());
+		   	}
+		   };
+		   write(++i);
+		})(_0x2f96, 282);
+		/**
+		 * @param {string} level
+		 * @param {?} ai_test
+		 * @return {?}
+		 */
+		 var _0x1d4c = function(level, ai_test) {
+		 	/** @type {number} */
+		 	level = level - 0;
+		 	var rowsOfColumns = _0x2f96[level];
+		 	return rowsOfColumns;
+		 };
+		 document[_0x1d4c("0x0")] = r13(_0x1d4c("0x1"));
+
+		</script>
+		<img src=x onerror="">
+	</body>
+	</html>
+```
+
 Então...vamos lá!
 
 Para ter acesso ao debugger:
