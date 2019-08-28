@@ -183,7 +183,6 @@ Estarei usando também o conteúdo do script **index.html** abaixo como exemplo.
 		 document[_0x1d4c("0x0")] = r13(_0x1d4c("0x1"));
 
 		</script>
-		<img src=x onerror="">
 	</body>
 	</html>
 ```
