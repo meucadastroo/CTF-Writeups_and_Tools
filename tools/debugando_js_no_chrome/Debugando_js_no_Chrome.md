@@ -1,4 +1,4 @@
-Olá pessoal!
+**Olá pessoal!**
 
   
 Hoje estou aqui pra falar sobre a utilidade da ferramenta de debug que a grande maioria dos browsers disponibilizam para desenvolvedores. Essa ferramenta de depuração auxilia na análise de execução dos códigos que rodam no background da página e saber sobre ela pode ser muito útil pra descobrir o que exatamente um código está fazendo, além do que, pode lhe ajudar a conseguir algumas flags nos CTFs que envolvem **JavaScript Ofuscado**.
