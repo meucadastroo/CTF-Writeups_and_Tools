@@ -20,6 +20,18 @@ def ascii_pp(msg):
 				pass
 				
 		print '[XOR]',i,'-',r.strip('\r').replace('\n',''),' [HEX] ',r.encode('HEX')
+		#XOR 1byte
+
+	for i in string.digits:
+		r=''
+		for x in msg:
+			try:
+				r += chr(ord(x) ^ int(i))
+			except Exception as e:
+				# print '[!] XOR -',e
+				pass
+				
+		print '[XOR]',i,'-',r.strip('\r').replace('\n',''),' [HEX] ',r.encode('HEX')
 
 	r=''
 	for i in range(len(msg)):
