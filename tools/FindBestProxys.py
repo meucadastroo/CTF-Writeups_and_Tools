@@ -25,7 +25,6 @@ def TimeToResp(df,ip,filename,timeout_=3):
 			url = '%s://%s:%s/'%(protocol,ip,port)
 			sys.stdout.write('\r%s Testing URL: %s 	  '%(colored('[>]', 'yellow'), colored(url, 'green')))
 			try:
-				# r = requests.get('http://checkip.dyn.com/', timeout=3, verify=False, proxies={protocol : url})
 				proxy = {protocol: 'http://%s:%s' %(ip, port)}
 				url_check = 'http://checkip.dyn.com/'
 				validate  = 'Current IP Address:'
@@ -36,7 +35,7 @@ def TimeToResp(df,ip,filename,timeout_=3):
 				r = requests.get(url_check, headers = { 'User-Agent': 'Mozilla/5.0' }, timeout=timeout_, verify=False, proxies=proxy)
 				if validate in r.content:
 					resp = (r.elapsed.total_seconds())
-					df.loc[-1] = [protocol,ip,port,resp,url]  # adding a row
+					df.loc[-1] = [protocol,ip,port,resp,url]                  # adding a row
 			 		df.index = df.index + 1   			   	  # shifting index
 			 		df = df.sort_index()   			 	  	  # sorting by index
 			except Exception as e:
