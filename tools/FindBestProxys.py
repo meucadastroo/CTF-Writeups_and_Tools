@@ -77,12 +77,33 @@ def DefineContryProxy(country):
 
 	return ProxySites
 
+def printmore():
+	print('%s %s :'%(colored('[+]','green'),colored('Run the commands below if you want to use a direct proxy on the terminal','yellow')))
+	print('#Linux ->')
+	print(colored(' #Enable:','green'))
+	print('	%s:~# %s'%(colored('root@pcname','red'),colored("export http_proxy='http://proxyServerAddress:proxyPort'",'green')))
+	print('	%s:~# %s'%(colored('root@pcname','red'),colored("export https_proxy='https://proxyServerAddress:proxyPort'",'green')))
+	print(colored(' #Disable:','yellow'))
+	print('	%s:~# %s'%(colored('root@pcname','red'),colored("unset http_proxy='http://proxyServerAddress:proxyPort'",'green')))
+	print('	%s:~# %s'%(colored('root@pcname','red'),colored("unset https_proxy='https://proxyServerAddress:proxyPort'",'green')))
+	print('\n#Windows ->')
+	print(colored(' #Enable','green'))
+	print('	%s> %s'%(colored('C:/any/path','red'),colored("set http_proxy='http://proxyServerAddress:proxyPort'",'green')))
+	print('	%s> %s'%(colored('C:/any/path','red'),colored("set https_proxy='https://proxyServerAddress:proxyPort'",'green')))
+	print(colored(' #Disable','yellow'))
+	print('	%s> %s'%(colored('C:/any/path','red'),colored("set http_proxy=''",'green')))
+	print('	%s> %s'%(colored('C:/any/path','red'),colored("set https_proxy=''",'green')))
+	exit()
+
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser()
 	parser.add_argument('-t', action='store', dest='timeout', required=False, help='Maximum request time wait. Default value = 3. ( E.g: -t 5 ) ')
 	parser.add_argument('-c', action='store', dest='country', required=False, help="Select one or more countries separated by ',' to search for proxies. Suported countrys: [BR,DE,US,IN,ID,UA,RU,TH,CN,FR,PL,ZA,IR,AR,GB,BD,EC,CA,SG,IT] . Default value = BR,EN. ( E.g: -c RU  or -c RU,US ) ")
 	parser.add_argument('-o', action='store', dest='filename', required=False, help='Pass the output filename.Standard ext = .csv ( E.g: -o proxys )')
+	parser.add_argument('--more', action='store_true', dest='more', help='Shows basic way to use proxy in terminal.')
 	arguments = parser.parse_args()
+	if arguments.more:
+		printmore()
 
 	df = pd.DataFrame(columns=['Protocol','IP','Port','Response','URL'])
 	regex = r'([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)'
