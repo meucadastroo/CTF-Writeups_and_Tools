@@ -30,7 +30,7 @@ def TimeToResp(df,ip,filename,timeout_=3):
 		for port in ports:
 			resp = '*'
 			url = '%s://%s:%s/'%(protocol,ip,port)
-			sys.stdout.write('\r%s Testing URL           : %s 	  '%(colored('[>]', 'yellow'), colored(url, 'green')))
+			sys.stdout.write('\r%s Testing URL             : %s 	  '%(colored('[>]', 'yellow'), colored(url, 'green')))
 			try:
 				proxy = {protocol: 'http://%s:%s' %(ip, port)}
 				url_check = 'http://checkip.dyn.com/'
@@ -57,7 +57,7 @@ def TimeToResp(df,ip,filename,timeout_=3):
 			d=time.time()-t0; 
 			df = df.sort_values(by ='Response' )
 			df.set_index('Protocol', inplace=True)
-			sys.stdout.write('\r%s %s Proxys Found in %.2f s. 								\n\n%s\n'%(colored('[+]', 'green'),colored(len(df.index), 'green'), d, tabulate(df, headers='keys', tablefmt='psql')))
+			sys.stdout.write('\r%s Proxys Found in %.2f s.: %s							\n\n%s\n'%(colored('[+]', 'green'), d, colored(len(df.index), 'green'), tabulate(df, headers='keys', tablefmt='psql')))
 			if filename != None :
 				df.to_csv('%s.csv'%filename, sep=';', decimal=',', index=False)
 	except Exception as e:
@@ -101,10 +101,10 @@ if __name__ == '__main__':
 	else:
 		timeout_ = 3
 
-	print('%s Timeout  		  : %s     '%(colored('[>]', 'yellow'), colored(timeout_, 'green')))
-	print('%s Countrys              : %s     '%(colored('[>]', 'yellow'), colored(arguments.country, 'green')))
-	print('%s Save in file 	  : %s     '%(colored('[>]', 'yellow'), colored(arguments.filename, 'green')))
-	print('%s Number of IPs to test : %s     '%(colored('[>]','yellow'), colored(len(ips), 'green')))
+	print('%s Timeout  		    : %s     '%(colored('[>]', 'yellow'), colored(timeout_, 'green')))
+	print('%s Countrys                : %s     '%(colored('[>]', 'yellow'), colored(arguments.country, 'green')))
+	print('%s Save in file 	    : %s     '%(colored('[>]', 'yellow'), colored(arguments.filename, 'green')))
+	print('%s Number of IPs to test   : %s     '%(colored('[>]','yellow'), colored(len(ips), 'green')))
 	for ip in ips:
 		threading.Thread(target=TimeToResp,args=(df,ip,arguments.filename,timeout_)).start()
 		NumberThreads += 1
