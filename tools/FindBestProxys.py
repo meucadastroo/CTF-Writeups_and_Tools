@@ -1,13 +1,20 @@
-import re
-import sys
-import time
-import argparse
-import requests
-import threading
-import pandas as pd
-from termcolor import colored
-from requests.packages.urllib3.exceptions import InsecureRequestWarning
-requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+try:
+	import re
+	import sys
+	import time
+	import argparse
+	import requests
+	import threading
+	import pandas as pd
+	from termcolor import colored
+	from tabulate import tabulate
+	from requests.packages.urllib3.exceptions import InsecureRequestWarning
+	requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+except Exception as e:
+	module = e[0].replace('No module named ','')
+	print('[!] Run : pip install %s'%module)
+	print('[!] You must have this module installed to work.')
+	exit()
 
 NumberThreads = 0
 t0=time.time()
@@ -35,9 +42,9 @@ def TimeToResp(df,ip,filename,timeout_=3):
 				r = requests.get(url_check, headers = { 'User-Agent': 'Mozilla/5.0' }, timeout=timeout_, verify=False, proxies=proxy)
 				if validate in r.content:
 					resp = (r.elapsed.total_seconds())
-					df.loc[-1] = [protocol,ip,port,resp,url]  # adding a row
-			 		df.index = df.index + 1   			   	  # shifting index
-			 		df = df.sort_index()   			 	  	  # sorting by index
+					df.loc[-1] = [protocol,ip,port,resp,url]
+					df.index = df.index+1
+					df = df.sort_index()
 			except Exception as e:
 				# print('Error ->\n',e)
 				pass
@@ -48,39 +55,56 @@ def TimeToResp(df,ip,filename,timeout_=3):
 		if NumberThreads <= 0:
 			global t0
 			d=time.time()-t0; 
-		 	df = df.sort_values(by ='Response' )
-			sys.stdout.write('\r%s %s Proxys Found in %.2f s. : 								\n\n%s\n'%(colored('[+]', 'green'),colored(len(df.index), 'green'), d, df.to_string(index=False)))
+			df = df.sort_values(by ='Response' )
+			df.set_index('Protocol', inplace=True)
+			sys.stdout.write('\r%s %s Proxys Found in %.2f s. 								\n\n%s\n'%(colored('[+]', 'green'),colored(len(df.index), 'green'), d, tabulate(df, headers='keys', tablefmt='psql')))
 			if filename != None :
 				df.to_csv('%s.csv'%filename, sep=';', decimal=',', index=False)
 	except Exception as e:
 			print('Error ->',e)
 			pass
 
+def DefineContryProxy(country):
+	countrys = ['BR','DE','US','IN','ID','UA','RU','TH','CN','FR','PL','ZA','IR','AR','GB','BD','EC','CA','SG','IT']
+	country = country.split(',')
+	ProxySites = []
+	for c in country:
+		if c.upper() in countrys:
+			ProxySites.append('http://spys.one/proxys/%s/'%c.upper())
+		else:
+			print('%s Invalid Country !'%colored('[!]','red'))
+			exit()
 
+	return ProxySites
 
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser()
-	parser.add_argument('-t', action='store', dest='timeout', required=False, help='Maximum request time wait. Default value = 3. ( E.g: 5 ) ')
-	parser.add_argument('-o', action='store', dest='filename', required=False, help='Pass the output filename. Default ext = .csv ( E.g: proxys )')
-	argumentos = parser.parse_args()
+	parser.add_argument('-t', action='store', dest='timeout', required=False, help='Maximum request time wait. Default value = 3. ( E.g: -t 5 ) ')
+	parser.add_argument('-c', action='store', dest='country', required=False, help="Select one or more countries separated by ',' to search for proxies. Suported countrys: [BR,DE,US,IN,ID,UA,RU,TH,CN,FR,PL,ZA,IR,AR,GB,BD,EC,CA,SG,IT] . Default value = BR,EN. ( E.g: -c RU  or -c RU,US ) ")
+	parser.add_argument('-o', action='store', dest='filename', required=False, help='Pass the output filename.Standard ext = .csv ( E.g: -o proxys )')
+	arguments = parser.parse_args()
 
 	df = pd.DataFrame(columns=['Protocol','IP','Port','Response','URL'])
 	regex = r'([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)'
 	ProxySites = ['http://spys.one/free-proxy-list/BR/0','http://spys.one/free-proxy-list/BR/1','http://spys.one/','http://spys.one/en/']
+	if arguments.country:
+		ProxySites = DefineContryProxy(arguments.country)
+
 	r = ''
 	for url in ProxySites:
-		r += requests.get(url).content
+		r += str(requests.get(url).content)
 
 	ips = re.findall(regex, r)
 	ips = list(dict.fromkeys(ips))
-	if argumentos.timeout:
-		timeout_ = int(argumentos.timeout)
+	if arguments.timeout:
+		timeout_ = int(arguments.timeout)
 	else:
 		timeout_ = 3
 
 	print('%s Timeout  		  : %s     '%(colored('[>]', 'yellow'), colored(timeout_, 'green')))
-	print('%s Save in file 	  : %s     '%(colored('[>]', 'yellow'), colored(argumentos.filename, 'green')))
+	print('%s Countrys              : %s     '%(colored('[>]', 'yellow'), colored(arguments.country, 'green')))
+	print('%s Save in file 	  : %s     '%(colored('[>]', 'yellow'), colored(arguments.filename, 'green')))
 	print('%s Number of IPs to test : %s     '%(colored('[>]','yellow'), colored(len(ips), 'green')))
 	for ip in ips:
-		threading.Thread(target=TimeToResp,args=(df,ip,argumentos.filename,timeout_)).start()
+		threading.Thread(target=TimeToResp,args=(df,ip,arguments.filename,timeout_)).start()
 		NumberThreads += 1
