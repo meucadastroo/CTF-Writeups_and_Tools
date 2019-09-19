@@ -100,7 +100,7 @@ if __name__ == '__main__':
 	parser.add_argument('-t', action='store', dest='timeout', required=False, help='Maximum request time wait. Default value = 3. ( E.g: -t 5 ) ')
 	parser.add_argument('-c', action='store', dest='country', required=False, help="Select one or more countries separated by ',' to search for proxies. Suported countrys: [BR,DE,US,IN,ID,UA,RU,TH,CN,FR,PL,ZA,IR,AR,GB,BD,EC,CA,SG,IT] . Default value = BR,EN. ( E.g: -c RU  or -c RU,US ) ")
 	parser.add_argument('-o', action='store', dest='filename', required=False, help='Pass the output filename.Standard ext = .csv ( E.g: -o proxys )')
-	parser.add_argument('--more', action='store_true', dest='more', help='Shows basic way to use proxy in terminal.')
+	parser.add_argument('--more', action='store_true', dest='more', help='Shows basic way to set proxy in terminal.')
 	arguments = parser.parse_args()
 	if arguments.more:
 		printmore()
