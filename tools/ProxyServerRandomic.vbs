@@ -1,6 +1,5 @@
-'############## Randomize Proxy-Server #################
+
 '#                    Dev. by JJ                       #
-'########################666############################
 
 public proxy
 
@@ -27,7 +26,7 @@ Sub laco()
      Call setNewProxy 
      
      AckTime = 5
-     valUserEnd = InfoBox.Popup("Para Encerrar o ProyServer Select [YES] ?", AckTime, "ProyServer [" & proxy & "] ?",4)
+     valUserEnd = WScript.CreateObject("WScript.Shell").Popup("Para Encerrar o ProyServer Select [YES] ?", AckTime, "ProyServer [" & proxy & "] ?",4)
      If valUserEnd=vbYes Then
         i = 0
         msgBox("ProxyServer Encerrado Com Sucesso !")
@@ -43,13 +42,11 @@ End Sub
 Sub setNewProxy()
           
      Randomize
-     opc=int(rnd*2) + 1
+     opc=int(rnd*2) + 5
 
-     if opc = 1 Then
-       proxy = "177.128.210.250:8080"
-     ElseIf opc = 2 Then
-       proxy = "127.0.0.1:8080"
-     End If 
+     s = "191.252.177.42:8080,157.55.201.42:8080,157.245.182.232:8080,177.125.148.26:8080,177.66.54.199:8080,185.255.47.142:8080,183.88.77.25:8080,81.182.211.107:8080,93.125.45.1:8080,177.91.219.28:8080,39.108.123.4:3128,177.99.206.82:8080,200.192.255.102:8080,177.124.75.52:3128,143.255.54.136:8080,213.6.77.118:8080,168.195.231.136:8080,177.67.39.57:8080"
+     ips = Split(s, ",")
+     proxy = ips(opc)  
 
      Set objShell = WScript.CreateObject("WScript.Shell")  
      RegLocate = "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ProxyServer"
